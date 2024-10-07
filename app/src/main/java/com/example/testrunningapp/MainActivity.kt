@@ -1,5 +1,6 @@
 package com.example.testrunningapp
 
+import LoginScreen
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TestRunningAppTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    HomeScreen()
+                    LoginScreen()
                 }
             }
         }
