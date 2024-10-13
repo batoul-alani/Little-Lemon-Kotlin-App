@@ -44,6 +44,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.littlelemon.UpperPanel
 import com.example.testrunningapp.ui.theme.Pink80
 import com.example.testrunningapp.ui.theme.Purple80
@@ -71,7 +75,7 @@ class MainActivity : ComponentActivity() {
 
                     content = {
                             paddingValues ->
-                        MenuContent(paddingValues = paddingValues)
+                        MyNavigation(paddingValues = paddingValues)
                     }
                 )
 
@@ -79,11 +83,22 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @Composable
-fun HomeScreen(){
-    Column {
-        UpperPanel()
-        LowerPanel()
+fun MyNavigation(paddingValues: PaddingValues){
+    val navController = rememberNavController()
+    NavHost(
+        navController, startDestination =  Login.route
+    ){
+        composable(Home.route) {
+            HomeScreen()
+        }
+        composable(Login.route) {
+            LoginScreen(navController = navController)
+        }
+        composable(MenuList.route) {
+            MenuContent(paddingValues = paddingValues)
+        }
     }
 }
 

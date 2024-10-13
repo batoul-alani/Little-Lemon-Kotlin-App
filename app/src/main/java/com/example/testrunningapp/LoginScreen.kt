@@ -1,3 +1,4 @@
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -22,10 +23,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.testrunningapp.Home
 import com.example.testrunningapp.R
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(navController: NavController){
     val currentContext = LocalContext.current
     var userName by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -54,6 +57,7 @@ fun LoginScreen(){
                         "Welcome to Little Lemon!",
                         Toast.LENGTH_LONG
                     ).show()
+                    navController.navigate(Home.route)
                 } else {
                     Toast.makeText(currentContext,
                         "Invalid credentials."
@@ -72,10 +76,4 @@ fun LoginScreen(){
 
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LoginScreenPreview(){
-    LoginScreen()
 }
