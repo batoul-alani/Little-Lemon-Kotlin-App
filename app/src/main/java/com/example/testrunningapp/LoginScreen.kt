@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.testrunningapp.Home
+import com.example.testrunningapp.Main
 import com.example.testrunningapp.R
 
 @Composable
@@ -50,14 +51,14 @@ fun LoginScreen(navController: NavController){
             visualTransformation = PasswordVisualTransformation(),)
         Button(
             onClick = {
-                if(userName.text == "darian"
-                    && password.text=="littlelemon"
+                if(userName.text == "batoul"
+                    && password.text=="123456"
                 ){
                     Toast.makeText(currentContext,
                         "Welcome to Little Lemon!",
                         Toast.LENGTH_LONG
                     ).show()
-                    navController.navigate(Home.route)
+                    navController.navigate(Main.route)
                 } else {
                     Toast.makeText(currentContext,
                         "Invalid credentials."
