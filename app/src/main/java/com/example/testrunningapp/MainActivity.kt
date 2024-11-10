@@ -5,6 +5,7 @@ import LoginScreen
 import MainScreen
 import MenuContent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,31 +21,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.testrunningapp.ui.theme.TestRunningAppTheme
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-
-            TestRunningAppTheme {
-                Scaffold (
-
-                    topBar =
-                    {
-                        TopAppBar(
-                            title = {
-                                Text(resources.getString(R.string.app_name))
-                            },
-                            )
-                    },
-
-                    content = {
-                            paddingValues ->
-                        MyNavigation(paddingValues = paddingValues)
-                    }
-                )
-
-            }
+        setContentView(R.layout.activity_main)
+        findViewById<View>(R.id.main_dish_1).setOnClickListener {
+            IngredientsActivity.start(this, "Hamburger")
+        }
+        findViewById<View>(R.id.main_dish_2).setOnClickListener {
+            IngredientsActivity.start(this, "Pasta")
         }
     }
 }
